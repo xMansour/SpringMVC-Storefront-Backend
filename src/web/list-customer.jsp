@@ -16,9 +16,9 @@
     </div>
     <div id="container">
         <input type="button" value="Add Customer" onclick="window.location.href='showFormForAdd'; return false;">
-        <form:form action="searchForCustomer" method="get">
+        <form:form action="${pageContext.request.contextPath}/customer/searchForCustomer" method="get">
             <label>Search for a Customer: </label>
-            <input type="text" name="userName"/>
+            <input type="text" name="customerName"/>
             <input type="submit" value="Search"/>
         </form:form>
         <table>
@@ -31,25 +31,25 @@
                 <th>Action</th>
             </tr>
 
-            <c:forEach var="user" items="${users}">
-                <c:url var="updateLink" value="/customer/showFormForUpdate">
+            <c:forEach var="customer" items="${customers}">
+                <c:url var="updateLink" value="${pageContext.request.contextPath}/customer/showFormForUpdate">
                     <c:param name="customerId" value="${customer.id}"/>
                 </c:url>
-                <c:url var="deleteLink" value="/customer/deleteUser">
+                <c:url var="deleteLink" value="${pageContext.request.contextPath}/customer/deleteCustomer">
                     <c:param name="customerId" value="${customer.id}"/>
                 </c:url>
 
-                <td>
-                <td>${customer.firstName}</td>
-                <td>${customer.lastName}</td>
-                <td>${customer.email}</td>
-                <td>${customer.birthDay}</td>
-                <td>${customer.sex}</td>
-                <td><a href="${updateLink}">Update</a>
-                    |
-                    <a href="${deleteLink}"
-                       onclick="if(!(confirm('Are you sure to delete this customer?'))) return false">Delete</a>
-                </td>
+                <tr>
+                    <td>${customer.firstName}</td>
+                    <td>${customer.lastName}</td>
+                    <td>${customer.email}</td>
+                    <td>${customer.birthDay}</td>
+                    <td>${customer.sex}</td>
+                    <td><a href="${updateLink}">Update</a>
+                        |
+                        <a href="${deleteLink}"
+                           onclick="if(!(confirm('Are you sure to delete this customer?'))) return false">Delete</a>
+                    </td>
 
                 </tr>
             </c:forEach>

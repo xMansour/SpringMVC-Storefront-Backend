@@ -15,4 +15,5 @@ public interface CustomerDAO {
 
 
     List<Customer> searchCustomer(String userName);
+
 }
