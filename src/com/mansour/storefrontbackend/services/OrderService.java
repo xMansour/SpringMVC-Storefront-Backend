@@ -1,10 +1,10 @@
-package com.mansour.storefrontbackend.dao;
+package com.mansour.storefrontbackend.services;
 
 import com.mansour.storefrontbackend.entities.Order;
 
 import java.util.List;
 
-public interface OrderDAO {
+public interface OrderService {
     void createOrder(Order order);
 
     Order getOrder(int orderId);
